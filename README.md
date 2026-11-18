@@ -39,13 +39,4 @@ python -m unittest discover -s tests -v
 
 ## Notas
 
-Las tarifas y restricciones horarias son valores **simulados para demostrar las reglas del sistema**, no datos reales de Software FJ. La aplicación es una simulación de consola: no tiene interfaz gráfica ni almacenamiento permanente. Las fechas de prueba son ficticias. El documento PDF asociado debe incorporar la URL real del repositorio cuando se publique en GitHub.
-
-## Subir a GitHub
-
-1. Inicia sesión en GitHub y crea un repositorio, por ejemplo `fase4-software-fj`.
-2. Usa **Add file > Upload files** y carga `main.py`, `modelos.py`, `gestor.py`, `README.md` y la carpeta `tests/` (puedes usar también Git desde VS Code).
-3. Añade el archivo PDF del informe y comprueba que el repositorio sea visible para tu tutor.
-4. Copia su URL al documento y compártela en el foro de la Fase 4.
-
-No incluyas datos personales reales en los ejemplos ni subas archivos de configuración privada.
+Las tarifas y restricciones horarias son valores **simulados para demostrar las reglas del sistema**, no datos reales de Software FJ. La aplicación es una simulación de consola: no tiene interfaz gráfica ni almacenamiento permanente. Las fechas de prueba son ficticias.
