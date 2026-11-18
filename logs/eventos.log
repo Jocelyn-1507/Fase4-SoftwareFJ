@@ -1,0 +1,236 @@
+2026-11-18 00:58:57,502 | INFO | Cliente registrado: id=f22e691e
+2026-11-18 00:58:57,502 | INFO | Operación 01 completada: Registrar cliente válido
+2026-11-18 00:58:57,502 | ERROR | Operación 02 fallida: Rechazar correo inválido
+Traceback (most recent call last):
+  File "/mnt/data/Fase4_SoftwareFJ/main.py", line 22, in ejecutar
+    resultado = funcion()
+  File "/mnt/data/Fase4_SoftwareFJ/main.py", line 52, in <lambda>
+    ("Rechazar correo inválido", lambda: gestor.registrar_cliente('Juan Pérez', 'correo-malo', '3001234567'), False),
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Fase4_SoftwareFJ/gestor.py", line 18, in registrar_cliente
+    cliente = Cliente(nombre, correo, telefono)
+  File "/mnt/data/Fase4_SoftwareFJ/modelos.py", line 79, in __init__
+    self.correo = correo
+    ^^^^^^^^^^^
+  File "/mnt/data/Fase4_SoftwareFJ/modelos.py", line 99, in correo
+    raise DatosInvalidos("El correo electrónico no es válido.")
+modelos.DatosInvalidos: El correo electrónico no es válido.
+2026-11-18 00:58:57,503 | INFO | Cliente registrado: id=f5251cfb
+2026-11-18 00:58:57,503 | INFO | Operación 03 completada: Registrar segundo cliente
+2026-11-18 00:58:57,504 | ERROR | Operación 04 fallida: Rechazar correo duplicado
+Traceback (most recent call last):
+  File "/mnt/data/Fase4_SoftwareFJ/main.py", line 22, in ejecutar
+    resultado = funcion()
+  File "/mnt/data/Fase4_SoftwareFJ/main.py", line 54, in <lambda>
+    ("Rechazar correo duplicado", lambda: gestor.registrar_cliente('Ana Dos', 'ANA@example.com', '3121234567'), False),
+                                          ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Fase4_SoftwareFJ/gestor.py", line 20, in registrar_cliente
+    raise DatosInvalidos("El correo ya se encuentra registrado.")
+modelos.DatosInvalidos: El correo ya se encuentra registrado.
+2026-11-18 00:58:57,504 | INFO | Servicio registrado: Sala Sala Norte, capacidad 12 personas
+2026-11-18 00:58:57,504 | INFO | Operación 05 completada: Crear servicio de sala
+2026-11-18 00:58:57,504 | ERROR | Operación 06 fallida: Rechazar capacidad incorrecta
+Traceback (most recent call last):
+  File "/mnt/data/Fase4_SoftwareFJ/main.py", line 22, in ejecutar
+    resultado = funcion()
+  File "/mnt/data/Fase4_SoftwareFJ/main.py", line 56, in <lambda>
+    ("Rechazar capacidad incorrecta", lambda: gestor.registrar_servicio(Sala('Sala Invalida', 30000, 0)), False),
+                                                                        ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Fase4_SoftwareFJ/modelos.py", line 166, in __init__
+    raise DatosInvalidos("La capacidad de la sala debe ser un entero positivo.")
+modelos.DatosInvalidos: La capacidad de la sala debe ser un entero positivo.
+2026-11-18 00:58:57,504 | INFO | Servicio registrado: Equipo Proyector, referencia EP-01
+2026-11-18 00:58:57,504 | INFO | Operación 07 completada: Crear servicio de equipo
+2026-11-18 00:58:57,504 | INFO | Servicio registrado: Asesoría Asesoría Python, especialidad Programación
+2026-11-18 00:58:57,504 | INFO | Operación 08 completada: Crear servicio de asesoría
+2026-11-18 00:58:57,504 | ERROR | Operación 09 fallida: Rechazar tarifa negativa
+Traceback (most recent call last):
+  File "/mnt/data/Fase4_SoftwareFJ/main.py", line 22, in ejecutar
+    resultado = funcion()
+  File "/mnt/data/Fase4_SoftwareFJ/main.py", line 59, in <lambda>
+    ("Rechazar tarifa negativa", lambda: gestor.registrar_servicio(Equipo('Equipo malo', -1, 'ERR')), False),
+                                                                   ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Fase4_SoftwareFJ/modelos.py", line 184, in __init__
+    super().__init__(nombre, tarifa_hora)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Fase4_SoftwareFJ/modelos.py", line 124, in __init__
+    self._tarifa = positivo(tarifa_hora, "La tarifa")
+                   ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Fase4_SoftwareFJ/modelos.py", line 41, in positivo
+    raise DatosInvalidos(f"{campo} debe ser mayor que cero y finito.")
+modelos.DatosInvalidos: La tarifa debe ser mayor que cero y finito.
+2026-11-18 00:58:57,505 | INFO | Reserva creada: id=dfc73023
+2026-11-18 00:58:57,505 | INFO | Operación 10 completada: Crear reserva válida
+2026-11-18 00:58:57,505 | ERROR | Operación 11 fallida: Rechazar conflicto de horario
+Traceback (most recent call last):
+  File "/mnt/data/Fase4_SoftwareFJ/main.py", line 22, in ejecutar
+    resultado = funcion()
+  File "/mnt/data/Fase4_SoftwareFJ/main.py", line 61, in <lambda>
+    ("Rechazar conflicto de horario", lambda: gestor.crear_reserva(datos['c2'], datos['sala'], 1, inicio + timedelta(hours=1)), False),
+                                              ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Fase4_SoftwareFJ/gestor.py", line 44, in crear_reserva
+    raise ReservaInvalida("Existe una reserva que se superpone para este servicio.")
+modelos.ReservaInvalida: Existe una reserva que se superpone para este servicio.
+2026-11-18 00:58:57,505 | INFO | Operación 12 completada: Confirmar reserva
+2026-11-18 00:58:57,505 | INFO | Operación 13 completada: Procesar reserva
+2026-11-18 00:58:57,505 | ERROR | Operación 14 fallida: Rechazar cancelación procesada
+Traceback (most recent call last):
+  File "/mnt/data/Fase4_SoftwareFJ/main.py", line 22, in ejecutar
+    resultado = funcion()
+  File "/mnt/data/Fase4_SoftwareFJ/main.py", line 64, in <lambda>
+    ("Rechazar cancelación procesada", lambda: datos['r1'].cancelar(), False),
+                                               ~~~~~~~~~~~~~~~~~~~~^^
+  File "/mnt/data/Fase4_SoftwareFJ/modelos.py", line 263, in cancelar
+    raise OperacionNoPermitida("No es posible cancelar una reserva procesada o cancelada.")
+modelos.OperacionNoPermitida: No es posible cancelar una reserva procesada o cancelada.
+2026-11-18 00:58:57,506 | INFO | Reserva creada: id=39d057f4
+2026-11-18 00:58:57,506 | INFO | Operación 15 completada: Crear y cancelar segunda reserva
+2026-11-18 00:58:57,506 | ERROR | Operación 16 fallida: Rechazar servicio no disponible
+Traceback (most recent call last):
+  File "/mnt/data/Fase4_SoftwareFJ/main.py", line 22, in ejecutar
+    resultado = funcion()
+  File "/mnt/data/Fase4_SoftwareFJ/main.py", line 66, in <lambda>
+    ("Rechazar servicio no disponible", lambda: (datos['asesoria'].cambiar_disponibilidad(False), gestor.crear_reserva(datos['c1'], datos['asesoria'], 1, inicio)), False),
+                                                                                                  ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Fase4_SoftwareFJ/gestor.py", line 37, in crear_reserva
+    nueva = Reserva(cliente, servicio, duracion, inicio)
+  File "/mnt/data/Fase4_SoftwareFJ/modelos.py", line 241, in __init__
+    raise ServicioNoDisponible("El servicio está fuera de servicio.")
+modelos.ServicioNoDisponible: El servicio está fuera de servicio.
+2026-11-18 00:58:57,506 | INFO | Operación 17 completada: Calcular costo con IVA y descuento
+2026-11-18 00:58:57,506 | ERROR | Operación 18 fallida: Rechazar duración inválida
+Traceback (most recent call last):
+  File "/mnt/data/Fase4_SoftwareFJ/main.py", line 22, in ejecutar
+    resultado = funcion()
+  File "/mnt/data/Fase4_SoftwareFJ/main.py", line 68, in <lambda>
+    ("Rechazar duración inválida", lambda: gestor.crear_reserva(datos['c1'], datos['equipo'], -2, inicio + timedelta(days=1)), False),
+                                           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Fase4_SoftwareFJ/gestor.py", line 37, in crear_reserva
+    nueva = Reserva(cliente, servicio, duracion, inicio)
+  File "/mnt/data/Fase4_SoftwareFJ/modelos.py", line 244, in __init__
+    self.duracion = servicio.validar_parametros(duracion)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/mnt/data/Fase4_SoftwareFJ/modelos.py", line 190, in validar_parametros
+    horas = positivo(duracion, "La duración")
+            ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/Fase4_SoftwareFJ/modelos.py", line 41, in positivo
+    raise DatosInvalidos(f"{campo} debe ser mayor que cero y finito.")
+modelos.DatosInvalidos: La duración debe ser mayor que cero y finito.
+2026-11-18 11:45:23,124 | INFO | Cliente registrado: id=2094eca2
+2026-11-18 11:45:23,124 | INFO | Operación 01 completada: Registrar cliente válido
+2026-11-18 11:45:23,125 | ERROR | Operación 02 fallida: Rechazar correo inválido
+Traceback (most recent call last):
+  File "C:\Users\Asus\Downloads\Fase4_SoftwareFJ\main.py", line 22, in ejecutar
+    resultado = funcion()
+  File "C:\Users\Asus\Downloads\Fase4_SoftwareFJ\main.py", line 52, in <lambda>
+    ("Rechazar correo inválido", lambda: gestor.registrar_cliente('Juan Pérez', 'correo-malo', '3001234567'), False),
+                                         ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Asus\Downloads\Fase4_SoftwareFJ\gestor.py", line 18, in registrar_cliente
+    cliente = Cliente(nombre, correo, telefono)
+  File "C:\Users\Asus\Downloads\Fase4_SoftwareFJ\modelos.py", line 79, in __init__
+    self.correo = correo
+    ^^^^^^^^^^^
+  File "C:\Users\Asus\Downloads\Fase4_SoftwareFJ\modelos.py", line 99, in correo
+    raise DatosInvalidos("El correo electrónico no es válido.")
+modelos.DatosInvalidos: El correo electrónico no es válido.
+2026-11-18 11:45:23,137 | INFO | Cliente registrado: id=c854c394
+2026-11-18 11:45:23,138 | INFO | Operación 03 completada: Registrar segundo cliente
+2026-11-18 11:45:23,138 | ERROR | Operación 04 fallida: Rechazar correo duplicado
+Traceback (most recent call last):
+  File "C:\Users\Asus\Downloads\Fase4_SoftwareFJ\main.py", line 22, in ejecutar
+    resultado = funcion()
+  File "C:\Users\Asus\Downloads\Fase4_SoftwareFJ\main.py", line 54, in <lambda>
+    ("Rechazar correo duplicado", lambda: gestor.registrar_cliente('Ana Dos', 'ANA@example.com', '3121234567'), False),
+                                          ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Asus\Downloads\Fase4_SoftwareFJ\gestor.py", line 20, in registrar_cliente
+    raise DatosInvalidos("El correo ya se encuentra registrado.")
+modelos.DatosInvalidos: El correo ya se encuentra registrado.
+2026-11-18 11:45:23,140 | INFO | Servicio registrado: Sala Sala Norte, capacidad 12 personas
+2026-11-18 11:45:23,140 | INFO | Operación 05 completada: Crear servicio de sala
+2026-11-18 11:45:23,140 | ERROR | Operación 06 fallida: Rechazar capacidad incorrecta
+Traceback (most recent call last):
+  File "C:\Users\Asus\Downloads\Fase4_SoftwareFJ\main.py", line 22, in ejecutar
+    resultado = funcion()
+  File "C:\Users\Asus\Downloads\Fase4_SoftwareFJ\main.py", line 56, in <lambda>
+    ("Rechazar capacidad incorrecta", lambda: gestor.registrar_servicio(Sala('Sala Invalida', 30000, 0)), False),
+                                                                        ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Asus\Downloads\Fase4_SoftwareFJ\modelos.py", line 166, in __init__
+    raise DatosInvalidos("La capacidad de la sala debe ser un entero positivo.")
+modelos.DatosInvalidos: La capacidad de la sala debe ser un entero positivo.
+2026-11-18 11:45:23,141 | INFO | Servicio registrado: Equipo Proyector, referencia EP-01
+2026-11-18 11:45:23,141 | INFO | Operación 07 completada: Crear servicio de equipo
+2026-11-18 11:45:23,141 | INFO | Servicio registrado: Asesoría Asesoría Python, especialidad Programación
+2026-11-18 11:45:23,141 | INFO | Operación 08 completada: Crear servicio de asesoría
+2026-11-18 11:45:23,141 | ERROR | Operación 09 fallida: Rechazar tarifa negativa
+Traceback (most recent call last):
+  File "C:\Users\Asus\Downloads\Fase4_SoftwareFJ\main.py", line 22, in ejecutar
+    resultado = funcion()
+  File "C:\Users\Asus\Downloads\Fase4_SoftwareFJ\main.py", line 59, in <lambda>
+    ("Rechazar tarifa negativa", lambda: gestor.registrar_servicio(Equipo('Equipo malo', -1, 'ERR')), False),
+                                                                   ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Asus\Downloads\Fase4_SoftwareFJ\modelos.py", line 184, in __init__
+    super().__init__(nombre, tarifa_hora)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Asus\Downloads\Fase4_SoftwareFJ\modelos.py", line 124, in __init__
+    self._tarifa = positivo(tarifa_hora, "La tarifa")
+                   ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Asus\Downloads\Fase4_SoftwareFJ\modelos.py", line 41, in positivo
+    raise DatosInvalidos(f"{campo} debe ser mayor que cero y finito.")
+modelos.DatosInvalidos: La tarifa debe ser mayor que cero y finito.
+2026-11-18 11:45:23,143 | INFO | Reserva creada: id=b9fe573d
+2026-11-18 11:45:23,143 | INFO | Operación 10 completada: Crear reserva válida
+2026-11-18 11:45:23,143 | ERROR | Operación 11 fallida: Rechazar conflicto de horario
+Traceback (most recent call last):
+  File "C:\Users\Asus\Downloads\Fase4_SoftwareFJ\main.py", line 22, in ejecutar
+    resultado = funcion()
+  File "C:\Users\Asus\Downloads\Fase4_SoftwareFJ\main.py", line 61, in <lambda>
+    ("Rechazar conflicto de horario", lambda: gestor.crear_reserva(datos['c2'], datos['sala'], 1, inicio + timedelta(hours=1)), False),
+                                              ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Asus\Downloads\Fase4_SoftwareFJ\gestor.py", line 44, in crear_reserva
+    raise ReservaInvalida("Existe una reserva que se superpone para este servicio.")
+modelos.ReservaInvalida: Existe una reserva que se superpone para este servicio.
+2026-11-18 11:45:23,144 | INFO | Operación 12 completada: Confirmar reserva
+2026-11-18 11:45:23,145 | INFO | Operación 13 completada: Procesar reserva
+2026-11-18 11:45:23,145 | ERROR | Operación 14 fallida: Rechazar cancelación procesada
+Traceback (most recent call last):
+  File "C:\Users\Asus\Downloads\Fase4_SoftwareFJ\main.py", line 22, in ejecutar
+    resultado = funcion()
+  File "C:\Users\Asus\Downloads\Fase4_SoftwareFJ\main.py", line 64, in <lambda>
+    ("Rechazar cancelación procesada", lambda: datos['r1'].cancelar(), False),
+                                               ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Asus\Downloads\Fase4_SoftwareFJ\modelos.py", line 263, in cancelar
+    raise OperacionNoPermitida("No es posible cancelar una reserva procesada o cancelada.")
+modelos.OperacionNoPermitida: No es posible cancelar una reserva procesada o cancelada.
+2026-11-18 11:45:23,146 | INFO | Reserva creada: id=dab29d18
+2026-11-18 11:45:23,146 | INFO | Operación 15 completada: Crear y cancelar segunda reserva
+2026-11-18 11:45:23,147 | ERROR | Operación 16 fallida: Rechazar servicio no disponible
+Traceback (most recent call last):
+  File "C:\Users\Asus\Downloads\Fase4_SoftwareFJ\main.py", line 22, in ejecutar
+    resultado = funcion()
+  File "C:\Users\Asus\Downloads\Fase4_SoftwareFJ\main.py", line 66, in <lambda>
+    ("Rechazar servicio no disponible", lambda: (datos['asesoria'].cambiar_disponibilidad(False), gestor.crear_reserva(datos['c1'], datos['asesoria'], 1, inicio)), False),
+                                                                                                  ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Asus\Downloads\Fase4_SoftwareFJ\gestor.py", line 37, in crear_reserva
+    nueva = Reserva(cliente, servicio, duracion, inicio)
+  File "C:\Users\Asus\Downloads\Fase4_SoftwareFJ\modelos.py", line 241, in __init__
+    raise ServicioNoDisponible("El servicio está fuera de servicio.")
+modelos.ServicioNoDisponible: El servicio está fuera de servicio.
+2026-11-18 11:45:23,148 | INFO | Operación 17 completada: Calcular costo con IVA y descuento
+2026-11-18 11:45:23,148 | ERROR | Operación 18 fallida: Rechazar duración inválida
+Traceback (most recent call last):
+  File "C:\Users\Asus\Downloads\Fase4_SoftwareFJ\main.py", line 22, in ejecutar
+    resultado = funcion()
+  File "C:\Users\Asus\Downloads\Fase4_SoftwareFJ\main.py", line 68, in <lambda>
+    ("Rechazar duración inválida", lambda: gestor.crear_reserva(datos['c1'], datos['equipo'], -2, inicio + timedelta(days=1)), False),
+                                           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Asus\Downloads\Fase4_SoftwareFJ\gestor.py", line 37, in crear_reserva
+    nueva = Reserva(cliente, servicio, duracion, inicio)
+  File "C:\Users\Asus\Downloads\Fase4_SoftwareFJ\modelos.py", line 244, in __init__
+    self.duracion = servicio.validar_parametros(duracion)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Asus\Downloads\Fase4_SoftwareFJ\modelos.py", line 190, in validar_parametros
+    horas = positivo(duracion, "La duración")
+            ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Asus\Downloads\Fase4_SoftwareFJ\modelos.py", line 41, in positivo
+    raise DatosInvalidos(f"{campo} debe ser mayor que cero y finito.")
+modelos.DatosInvalidos: La duración debe ser mayor que cero y finito.

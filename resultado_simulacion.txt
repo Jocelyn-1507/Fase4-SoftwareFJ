@@ -1,0 +1,76 @@
+
+[01] Registrar cliente válido
+  OK: Cliente Ana López (ana@example.com)
+  Finalizó la operación; el sistema continúa activo.
+
+[02] Rechazar correo inválido
+  ERROR CONTROLADO: El correo electrónico no es válido.
+  Finalizó la operación; el sistema continúa activo.
+
+[03] Registrar segundo cliente
+  OK: Cliente Luis Mora (luis@example.com)
+  Finalizó la operación; el sistema continúa activo.
+
+[04] Rechazar correo duplicado
+  ERROR CONTROLADO: El correo ya se encuentra registrado.
+  Finalizó la operación; el sistema continúa activo.
+
+[05] Crear servicio de sala
+  OK: Sala Sala Norte, capacidad 12 personas
+  Finalizó la operación; el sistema continúa activo.
+
+[06] Rechazar capacidad incorrecta
+  ERROR CONTROLADO: La capacidad de la sala debe ser un entero positivo.
+  Finalizó la operación; el sistema continúa activo.
+
+[07] Crear servicio de equipo
+  OK: Equipo Proyector, referencia EP-01
+  Finalizó la operación; el sistema continúa activo.
+
+[08] Crear servicio de asesoría
+  OK: Asesoría Asesoría Python, especialidad Programación
+  Finalizó la operación; el sistema continúa activo.
+
+[09] Rechazar tarifa negativa
+  ERROR CONTROLADO: La tarifa debe ser mayor que cero y finito.
+  Finalizó la operación; el sistema continúa activo.
+
+[10] Crear reserva válida
+  OK: Reserva dfc73023 - Ana López - Sala Sala Norte, capacidad 12 personas - pendiente
+  Finalizó la operación; el sistema continúa activo.
+
+[11] Rechazar conflicto de horario
+  ERROR CONTROLADO: Existe una reserva que se superpone para este servicio.
+  Finalizó la operación; el sistema continúa activo.
+
+[12] Confirmar reserva
+  OK: completada
+  Finalizó la operación; el sistema continúa activo.
+
+[13] Procesar reserva
+  OK: completada
+  Finalizó la operación; el sistema continúa activo.
+
+[14] Rechazar cancelación procesada
+  ERROR CONTROLADO: No es posible cancelar una reserva procesada o cancelada.
+  Finalizó la operación; el sistema continúa activo.
+
+[15] Crear y cancelar segunda reserva
+  OK: (None, 'Reserva 39d057f4 - Luis Mora - Equipo Proyector, referencia EP-01 - cancelada')
+  Finalizó la operación; el sistema continúa activo.
+
+[16] Rechazar servicio no disponible
+  ERROR CONTROLADO: El servicio está fuera de servicio.
+  Finalizó la operación; el sistema continúa activo.
+
+[17] Calcular costo con IVA y descuento
+  OK: $ 107,100.00
+  Finalizó la operación; el sistema continúa activo.
+
+[18] Rechazar duración inválida
+  ERROR CONTROLADO: La duración debe ser mayor que cero y finito.
+  Finalizó la operación; el sistema continúa activo.
+
+RESULTADO: 18/18 casos con respuesta esperada.
+CLIENTES: 2 | SERVICIOS: 3 | RESERVAS: 2
+Registro de eventos: /mnt/data/Fase4_SoftwareFJ/logs/eventos.log
